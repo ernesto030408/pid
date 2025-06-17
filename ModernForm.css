@@ -1,0 +1,226 @@
+:root {
+  --main: #2c3e50;
+  --accent: #3498db;
+  --bg: #f7f9fa;
+  --border: #e1e4e8;
+  --error: #e74c3c;
+  --success: #2ecc71;
+  --shadow: 0 2px 12px rgba(44,62,80,0.06);
+}
+
+body {
+  background: var(--bg);
+}
+
+.modern-form {
+  max-width: 900px;
+  margin: 40px auto;
+  background: #fff;
+  border-radius: 18px;
+  box-shadow: var(--shadow);
+  padding: 32px 28px;
+  font-family: 'Inter', Arial, sans-serif;
+  color: var(--main);
+}
+
+.form-row {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 22px;
+  margin-bottom: 22px;
+}
+
+.form-group {
+  flex: 1 1 180px;
+  display: flex;
+  flex-direction: column;
+  min-width: 180px;
+}
+
+.full-width {
+  flex: 1 1 100%;
+}
+
+label {
+  font-size: 1rem;
+  margin-bottom: 8px;
+  color: var(--main);
+  font-weight: 500;
+}
+
+input[type="text"],
+input[type="date"],
+select,
+textarea {
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 12px;
+  font-size: 1rem;
+  transition: border-color 0.3s, box-shadow 0.3s;
+  outline: none;
+}
+
+input:focus,
+select:focus,
+textarea:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 6px 0 var(--accent), 0 1px 2px 0 rgba(44,62,80,0.04);
+}
+
+.medidas-row {
+  flex-direction: column;
+}
+
+.medidas-list {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.medida-item {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.medida-input {
+  flex: 1;
+}
+
+.icon-btn {
+  background: var(--bg);
+  border: none;
+  color: var(--accent);
+  font-size: 1.5rem;
+  border-radius: 50%;
+  width: 32px;
+  height: 32px;
+  cursor: pointer;
+  transition: background 0.2s, color 0.2s, box-shadow 0.2s;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-left: 4px;
+  box-shadow: none;
+}
+.icon-btn:hover:not(:disabled) {
+  background: var(--accent);
+  color: #fff;
+  box-shadow: 0 2px 8px rgba(52,152,219,0.16);
+  transform: scale(1.06);
+}
+.icon-btn.eliminar {
+  color: var(--error);
+}
+.icon-btn.eliminar:hover:not(:disabled) {
+  background: var(--error);
+  color: #fff;
+}
+.icon-btn:disabled {
+  opacity: 0.5;
+  cursor: not-allowed;
+}
+
+.form-actions {
+  display: flex;
+  gap: 18px;
+  justify-content: flex-end;
+  margin-top: 16px;
+}
+
+.main-btn {
+  background: var(--accent);
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  padding: 12px 32px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 12px rgba(52,152,219,0.10);
+  transition: background 0.25s, transform 0.2s, box-shadow 0.25s;
+}
+.main-btn:hover {
+  background: #217dbb;
+  transform: translateY(-2px) scale(1.03);
+  box-shadow: 0 4px 16px rgba(52,152,219,0.15);
+}
+.main-btn.cancelar {
+  background: var(--error);
+}
+.main-btn.cancelar:hover {
+  background: #b93c2b;
+}
+
+/* Responsive */
+@media (max-width: 900px) {
+  .form-row {
+    flex-direction: column;
+    gap: 12px;
+  }
+}
+
+/* Moderniza el select */
+select {
+  appearance: none; /* Elimina el estilo nativo */
+  -webkit-appearance: none;
+  -moz-appearance: none;
+  background: var(--bg);
+  border: 1.5px solid var(--border);
+  border-radius: 8px;
+  padding: 12px 40px 12px 12px; /* Espacio a la derecha para la flecha */
+  font-size: 1rem;
+  color: var(--main);
+  transition: border-color 0.3s, box-shadow 0.3s;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+}
+
+/* Flecha personalizada usando un pseudo-elemento */
+.form-group select {
+  background-image: url('data:image/svg+xml;utf8,<svg fill="gray" height="18" viewBox="0 0 20 20" width="18" xmlns="http://www.w3.org/2000/svg"><path d="M7.293 7.293a1 1 0 011.414 0L10 8.586l1.293-1.293a1 1 0 111.414 1.414l-2 2a1 1 0 01-1.414 0l-2-2a1 1 0 010-1.414z"/></svg>');
+  background-repeat: no-repeat;
+  background-position: right 12px center;
+  background-size: 18px 18px;
+}
+
+/* Mejorar el foco */
+select:focus {
+  border-color: var(--accent);
+  box-shadow: 0 0 6px 0 var(--accent), 0 1px 2px 0 rgba(44,62,80,0.04);
+}
+
+/* Opcional: cambia color al pasar el mouse */
+select:hover {
+  border-color: var(--accent);
+}
+
+/* Opciones (limitado por el navegador, pero puedes mejorar contraste) */
+select option {
+  color: var(--main);
+  background: #fff;
+  font-size: 1rem;
+}
+
+/* Deshabilita la flecha en Safari móvil (opcional) */
+@media (pointer: coarse) {
+  .form-group select {
+    background-image: none;
+  }
+}
+select option {
+  background: #f7f9fa;
+  color: #2c3e50;
+  font-size: 1.08rem;
+  padding: 14px 18px;
+  border-bottom: 1px solid #e1e4e8;
+  transition: background 0.2s, color 0.2s;
+  border-radius: 5px ;
+}
+
+select option:checked, select option:focus, select option:hover {
+  background: #3498db;
+  color: #fff;
+}
